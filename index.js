@@ -14,7 +14,7 @@ dbconnect()
 dotenv.config()
 const app = express()
 const  coreOptions= {
-    origin: "https://ems-v27p-git-co-timmys-projects-3cd6819d.vercel.app",
+    origin: "https://ems-fclx-hlfkzzavf-timmys-projects-3cd6819d.vercel.app",
     credentials: true,
     methods:['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders:[
