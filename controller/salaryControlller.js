@@ -29,11 +29,14 @@ const getSalaryById = async(req, res)=>{
         
         const salary = await Salary.find({employeeId: req.params.id}).populate('employeeId', 'employeeId')
         if(salary.length === 0){
-            //Finding the user's salary using the users's id sent as useparams fro the front end
+            //Finding the user's salary using the users's id sent as useparams from the front end
             const employee = await Employee.findOne({userId: req.params.id})
+            if(employee === null){
+                return res.status(404).json({message: "No salary record"})
+            }
+            
             const userSalary = await Salary.find({employeeId: employee._id}).populate('employeeId', 'employeeId')
             if(userSalary.length === 0){
-                console.log(userSalary)
                 return res.json({message: "Salary not found"})
             }else{
                 return  res.status(200).json(userSalary)
